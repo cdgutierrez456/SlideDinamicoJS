@@ -5,7 +5,9 @@ var p = {
 
     paginacion: document.querySelectorAll('#paginacion li'),
     item: 0,
-    cajaSlide: document.querySelector('#slide ul')
+    cajaSlide: document.querySelector('#slide ul'),
+    animacionSlide: 'fade',
+    imgSlide: document.querySelectorAll('#slide ul li')
 
 }
 
@@ -33,7 +35,18 @@ var m = {
 
         p.paginacion[item].style.opacity = 1;
 
-        p.cajaSlide.style.transition = ".5s left ease-in-out";
+        if(p.animacionSlide == 'slide') {
+            p.cajaSlide.style.transition = ".5s left ease-in-out";
+        }
+        if(p.animacionSlide == 'fade') {
+
+            p.imgSlide[item].style.opacity = 0;
+            p.imgSlide[item].style.transition = ".7s opacity ease-in-out";
+            setTimeout(function(){
+                p.imgSlide[item].style.opacity = 1;
+            }, 500);
+            
+        }
 
     }
 
